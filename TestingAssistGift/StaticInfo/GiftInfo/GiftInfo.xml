@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<GiftXmlRoot>
+  <Gift ID="197000">
+    <Name>MoonlightRing</Name>
+    <Resource>custom_MoonlightRing</Resource>
+    <Position>Eye</Position>
+    <Count>0</Count>
+    <Passive>197000</Passive>
+  </Gift>
+</GiftXmlRoot>

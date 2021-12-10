@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<info>
+  <name>Testing Assist Gift</name>
+  <descs>
+    <desc>敵味方全てのキャラクターに対して、個別に任意の効果を与えるチート系MODです。</desc>
+    <desc>MOD制作者に向けて、接待での動作テストをアシストする想定で作成しています。</desc>
+    <desc></desc>
+    <desc>セーブデータをロードした時、各階層の指定司書に戦闘表象「月光の輪」を追加します。</desc>
+    <desc></desc>
+    <desc>当MODに付属する設定ファイル "ModSettings.json" をメモ帳などで開いて編集することで、発揮する効果をカスタマイズすることができます。</desc>
+    <desc>設定の変更はゲームの起動中でも可能で、変更すれば次の舞台の開始時に適用されます。</desc>
+    <desc></desc>
+    <desc>MODバージョン: 1.0.0</desc>
+    <desc>Copyright © 2021 Tana</desc>
+  </descs>
+</info>

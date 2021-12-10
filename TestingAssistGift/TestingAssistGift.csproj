@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{62AB74C5-767A-4309-AF4C-607D9487A187}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestingAssistGift</RootNamespace>
+    <AssemblyName>TestingAssistGift</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\Assembly\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\Assembly\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BongBongEnterprises">
+      <HintPath>..\Assembly\BongBongEnterprises.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assembly\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\Assembly\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BattleUnitBuf_MoonlightRing.cs" />
+    <Compile Include="DataAccess\IModSettingsRepository.cs" />
+    <Compile Include="DiceCardSelfAbility_Reload.cs" />
+    <Compile Include="EffectModel.cs" />
+    <Compile Include="DataAccess\JsonModSettingsRepository.cs" />
+    <Compile Include="DataAccess\JsonEntites\AddingBufsOnRoundStartObject.cs" />
+    <Compile Include="DataAccess\JsonEntites\ApplyingEffectNameObject.cs" />
+    <Compile Include="DataAccess\JsonEntites\EffectObject.cs" />
+    <Compile Include="DataAccess\JsonEntites\RecoveringStatOnRoundStartObject.cs" />
+    <Compile Include="DataAccess\JsonEntites\StatBonusObject.cs" />
+    <Compile Include="DataAccess\JsonEntites\ModSettingsObject.cs" />
+    <Compile Include="Harmony_Patch.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="GiftPassiveAbility_197000.cs" />
+    <Compile Include="MoonlightRingModel.cs" />
+    <Compile Include="PrivateAccess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ArtWork\BufIcon\MoonlightRingBuf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArtWork\Cards\SettingsReload.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GiftArtWork\MoonlightRing_front.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GiftArtWork\MoonlightRing_side.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Info\jp\Info.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localize\jp\BattleCardAbilities\_BattleCardAbilities.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localize\jp\BattlesCards\_BattleCards.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localize\jp\EffectTexts\_EffectTexts.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localize\jp\GiftTexts\_GiftTexts.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StageModInfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticInfo\Card\Card.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StaticInfo\GiftInfo\GiftInfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>:: 特定のXMLドキュメントは不要
+del /q "$(TargetDir)Newtonsoft.Json.xml"
+
+:: Releaseビルド時は、配布用フォルダを作成する
+if "$(ConfigurationName)" neq "Release" goto EXIT
+
+set TargetDir=$(TargetDir)
+set ExportDir=$(SolutionDir)$(SolutionName)-bin-x.x.x\$(ProjectName)\
+if not exist "%25ExportDir%25" mkdir "%25ExportDir%25"
+echo D | xcopy  /s /e /y "%25TargetDir:~0,-1%25" "%25ExportDir%25"
+
+:EXIT</PostBuildEvent>
+  </PropertyGroup>
+</Project>

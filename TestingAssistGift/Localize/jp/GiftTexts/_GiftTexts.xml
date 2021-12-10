@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GiftTextRoot>
+  <GiftText ID="MoonlightRing">
+    <Name>月光の輪</Name>
+    <Desc>全てのキャラクターに対してカスタマイズされた様々な効果を発揮する(指定司書専用)</Desc>
+    <Prefix>月光の</Prefix>
+    <Postfix>輪</Postfix>
+    <AcquireCondition>Added by mod 'Testing Assist Gift'</AcquireCondition>
+  </GiftText>
+</GiftTextRoot>
