@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<info>
+  <name>Book Drop Rate Changer</name>
+  <descs>
+    <desc>敵が落とす本の数を倍増させるチート系MODです。</desc>
+    <desc>初期設定では落とす本の数が2倍になります。</desc>
+    <desc></desc>
+    <desc>当MODに付属する設定ファイル "Settings.json" をメモ帳などで開いて編集することで、倍率を変更することができます。</desc>
+    <desc>倍率の変更はゲームの起動中でも可能で、変更すれば即適用されます。</desc>
+    <desc></desc>
+    <desc>MODバージョン: 1.0.0</desc>
+    <desc>Copyright © 2021 Tana</desc>
+  </descs>
+</info>

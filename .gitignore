@@ -348,3 +348,10 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# カスタム設定
+launchSettings.json
+Assembly/*.dll
+Assembly/0Harmony.xml
+Assembly/Newtonsoft.Json.xml
+RuinaCheatMods-bin-x.x.x/

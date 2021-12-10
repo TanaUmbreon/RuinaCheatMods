@@ -1,0 +1,12 @@
+このフォルダに以下のMOD開発用DLLファイルを配置することで、各プロジェクトでの参照が有効となります。
+
+0Harmony.dll
+Assembly-CSharp.dll
+Newtonsoft.Json.dll
+BongBongEnterprises.dll
+UnityEngine.CoreModule.dll
+
+"Newtonsoft.Json.dll"は公式のダウンロードページ (https://github.com/JamesNK/Newtonsoft.Json/releases) から
+ZIP形式のバイナリをダウンロードし、その中に含まれる.NET Framework 2.0用のDLLを使用してください。
+ダウンロードするバージョンは最新版で問題ありませんが、
+それによってビルドできなかった場合はバージョン「13.0.1」をダウンロードしてください。
