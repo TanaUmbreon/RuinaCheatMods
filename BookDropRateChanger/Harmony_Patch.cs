@@ -33,7 +33,7 @@ namespace BookDropRateChanger
         #region 本のドロップ数の変更
 
         /// <summary>設定ファイルのパス</summary>
-        private static readonly string SettingsFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Settings.json");
+        private static readonly string SettingsFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "ModSettings.json");
 
         /// <summary>変更倍率の最小値</summary>
         private const float MinRate = 0.0f;
