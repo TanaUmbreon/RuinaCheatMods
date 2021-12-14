@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace TestingAssistGift
@@ -172,11 +170,12 @@ namespace TestingAssistGift
                 hpAdder = Mathf.Clamp(hpAdder, MinHpAdder, MaxHpAdder),
                 breakGageAdder = Mathf.Clamp(breakGageAdder, MinBreakGageAdder, MaxBreakGageAdder),
             };
-
             PlayPointAdder = Mathf.Clamp(playPointAdder, MinPlayPointAdder, MaxPlayPointAdder);
+
             HpRecover = Mathf.Clamp(hpRecover, MinHpRecover, MaxHpRecover);
             BreakRecover = Mathf.Clamp(breakRecover, MinBreakRecover, MaxBreakRecover);
             PlayPointRecover = Mathf.Clamp(playPointRecover, MinPlayPointRecover, MaxPlayPointRecover);
+
             StrengthStack = Mathf.Clamp(strengthStack, MinBufStack, MaxBufStack);
             WeakStack = Mathf.Clamp(weakStack, MinBufStack, MaxBufStack);
             EnduranceStack = Mathf.Clamp(enduranceStack, MinBufStack, MaxBufStack);
@@ -194,50 +193,153 @@ namespace TestingAssistGift
         /// <summary>
         /// 指定したキャラクターのステータスを設定されている値で回復します。
         /// </summary>
-        /// <param name="owner"></param>
-        public void RecoverTo(BattleUnitModel owner)
+        /// <param name="target"></param>
+        public void RecoverTo(BattleUnitModel target)
         {
             if (HpRecover > 0)
             {
-                owner.RecoverHP(HpRecover);
+                target.RecoverHP(HpRecover);
             }
 
-            if (BreakRecover > 0 && !owner.IsBreakLifeZero())
+            if (BreakRecover > 0 && !target.IsBreakLifeZero())
             {
-                owner.breakDetail.RecoverBreak(BreakRecover);
+                target.breakDetail.RecoverBreak(BreakRecover);
             }
 
             if (PlayPointRecover > 0)
             {
-                owner.cardSlotDetail.RecoverPlayPoint(PlayPointRecover);
+                target.cardSlotDetail.RecoverPlayPoint(PlayPointRecover);
             }
         }
 
         /// <summary>
         /// 指定したキャラクターに設定されている状態を付与します。
         /// </summary>
-        /// <param name="owner"></param>
-        public void AddBufsTo(BattleUnitModel owner)
+        /// <param name="target"></param>
+        public void AddBufsTo(BattleUnitModel target)
         {
-            AddBufTo(owner, KeywordBuf.Strength, StrengthStack);
-            AddBufTo(owner, KeywordBuf.Weak, WeakStack);
-            AddBufTo(owner, KeywordBuf.Endurance, EnduranceStack);
-            AddBufTo(owner, KeywordBuf.Disarm, DisarmStack);
-            AddBufTo(owner, KeywordBuf.Quickness, QuicknessStack);
-            AddBufTo(owner, KeywordBuf.Binding, BindingStack);
-            AddBufTo(owner, KeywordBuf.Protection, ProtectionStack);
-            AddBufTo(owner, KeywordBuf.Vulnerable, VulnerableStack);
-            AddBufTo(owner, KeywordBuf.BreakProtection, BreakProtectionStack);
-            AddBufTo(owner, KeywordBuf.Burn, BurnStack);
-            AddBufTo(owner, KeywordBuf.Paralysis, ParalysisStack);
-            AddBufTo(owner, KeywordBuf.Bleeding, BleedingStack);
+            AddBufTo(target, KeywordBuf.Strength, StrengthStack);
+            AddBufTo(target, KeywordBuf.Weak, WeakStack);
+            AddBufTo(target, KeywordBuf.Endurance, EnduranceStack);
+            AddBufTo(target, KeywordBuf.Disarm, DisarmStack);
+            AddBufTo(target, KeywordBuf.Quickness, QuicknessStack);
+            AddBufTo(target, KeywordBuf.Binding, BindingStack);
+            AddBufTo(target, KeywordBuf.Protection, ProtectionStack);
+            AddBufTo(target, KeywordBuf.Vulnerable, VulnerableStack);
+            AddBufTo(target, KeywordBuf.BreakProtection, BreakProtectionStack);
+            AddBufTo(target, KeywordBuf.Burn, BurnStack);
+            AddBufTo(target, KeywordBuf.Paralysis, ParalysisStack);
+            AddBufTo(target, KeywordBuf.Bleeding, BleedingStack);
         }
 
-        private void AddBufTo(BattleUnitModel owner, KeywordBuf buf, int stack)
+        /// <summary>
+        /// 指定したキャラクターに指定した状態を付与します。
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="bufType"></param>
+        /// <param name="stack"></param>
+        private void AddBufTo(BattleUnitModel target, KeywordBuf bufType, int stack)
         {
             if (stack <= 0) { return; }
 
-            owner.bufListDetail.AddKeywordBufThisRoundByEtc(buf, stack);
+            target.bufListDetail.AddKeywordBufThisRoundByEtc(bufType, stack);
+        }
+
+        /// <summary>
+        /// 前回適用した効果からの変更量が釣り合うように、指定したキャラクターの能力値を更新します。
+        /// </summary>
+        /// <param name="target">能力値を更新する対象のキャラクター。</param>
+        /// <param name="oldEffect">前回適用した効果。</param>
+        public void UpdateStat(BattleUnitModel target, EffectModel oldEffect)
+        {
+            UpdateHp(target, StatBonus.hpAdder - oldEffect.StatBonus.hpAdder);
+            UpdateBreak(target, StatBonus.breakAdder - oldEffect.StatBonus.breakAdder);
+            UpdatePlayPoint(target, PlayPointAdder - oldEffect.PlayPointAdder);
+        }
+
+        /// <summary>
+        /// 指定したキャラクターの体力を指定した差分で更新します。
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="hpAdderDiff"></param>
+        private void UpdateHp(BattleUnitModel target, int hpAdderDiff)
+        {
+            int newHp = Mathf.Clamp(
+                Convert.ToInt32(target.hp) + hpAdderDiff,
+                target.Book.DeadLine + 1,
+                target.MaxHp);
+
+            target.SetHp(newHp);
+        }
+
+        /// <summary>
+        /// 指定したキャラクターの混乱抵抗値を指定した差分で更新します。
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="breakAdderDiff"></param>
+        private void UpdateBreak(BattleUnitModel target, int breakAdderDiff)
+        {
+            target.breakDetail.breakGauge = target.breakDetail.GetDefaultBreakGauge();
+            if (target.breakDetail.IsBreakLifeZero()) { return; }
+
+            int newBreak = Mathf.Clamp(
+                target.breakDetail.breakLife + breakAdderDiff,
+                1,
+                target.breakDetail.breakGauge);
+
+            target.breakDetail.breakLife = newBreak;
+        }
+
+        /// <summary>
+        /// 指定したキャラクターの光を指定した差分で更新します。
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="playPointAdderDiff"></param>
+        private void UpdatePlayPoint(BattleUnitModel target, int playPointAdderDiff)
+        {
+            int newPlayPoint = Mathf.Clamp(
+                target.cardSlotDetail.PlayPoint + playPointAdderDiff,
+                0,
+                target.cardSlotDetail.GetMaxPlayPoint());
+
+            target.cardSlotDetail.SetPlayPoint(newPlayPoint);
+        }
+
+        /// <summary>
+        /// 前回適用した効果からの変更量が釣り合うように、指定したキャラクターの状態の付与数を更新します。
+        /// </summary>
+        /// <param name="target">状態の付与数を更新する対象のキャラクター。</param>
+        /// <param name="oldEffect">前回適用した効果。</param>
+        public void UpdateBufs(BattleUnitModel target, EffectModel oldEffect)
+        {
+            UpdateBuf(target, KeywordBuf.Strength, StrengthStack - oldEffect.StrengthStack);
+            UpdateBuf(target, KeywordBuf.Weak, WeakStack - oldEffect.WeakStack);
+            UpdateBuf(target, KeywordBuf.Endurance, EnduranceStack - oldEffect.EnduranceStack);
+            UpdateBuf(target, KeywordBuf.Disarm, DisarmStack - oldEffect.DisarmStack);
+            UpdateBuf(target, KeywordBuf.Quickness, QuicknessStack - oldEffect.QuicknessStack);
+            UpdateBuf(target, KeywordBuf.Binding, BindingStack - oldEffect.BindingStack);
+            UpdateBuf(target, KeywordBuf.Protection, ProtectionStack - oldEffect.ProtectionStack);
+            UpdateBuf(target, KeywordBuf.Vulnerable, VulnerableStack - oldEffect.VulnerableStack);
+            UpdateBuf(target, KeywordBuf.BreakProtection, BreakProtectionStack - oldEffect.BreakProtectionStack);
+            UpdateBuf(target, KeywordBuf.Burn, BurnStack - oldEffect.BurnStack);
+            UpdateBuf(target, KeywordBuf.Paralysis, ParalysisStack - oldEffect.ParalysisStack);
+            UpdateBuf(target, KeywordBuf.Bleeding, BleedingStack - oldEffect.BleedingStack);
+        }
+
+        private void UpdateBuf(BattleUnitModel target, KeywordBuf bufType, int stackDiff)
+        {
+            if (stackDiff == 0) { return; }
+            if (stackDiff > 0)
+            {
+                target.bufListDetail.AddKeywordBufThisRoundByEtc(bufType, stackDiff);
+                return;
+            }
+
+            var buf = target.bufListDetail.GetActivatedBuf(bufType);
+            if (buf == null) { return; }
+            buf.stack += stackDiff;
+            if (buf.stack > 0) { return; }
+            target.bufListDetail.RemoveBuf(buf);
         }
     }
 }
