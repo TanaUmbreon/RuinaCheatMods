@@ -35,12 +35,6 @@ namespace TestingAssistGift
 
                 EffectModel effect = repository.GetEffect(target);
                 buf.Apply(effect);
-
-                Log.Instance.InfomationWithCaller("Called.");
-                foreach (var card in ItemXmlDataList.instance.GetCardList())
-                {
-                    Log.Instance.Infomation($"{{ id: '{card.id}', name: '{card.Name}' }}");
-                }
             }
         }
 
@@ -51,8 +45,18 @@ namespace TestingAssistGift
         {
             foreach (BattleUnitModel target in BattleObjectManager.instance.GetAliveList(Faction.Player))
             {
-                target.personalEgoDetail.AddCard(Resource.ReloadCardId);
+                AddReloadCard(target);
             }
+        }
+
+        /// <summary>
+        /// 指定したキャラクターに個人特殊ページ「設定リロード」を追加します。
+        /// </summary>
+        /// <param name="target"></param>
+        public void AddReloadCard(BattleUnitModel target)
+        {
+            target.personalEgoDetail.RemoveCard(Resource.ReloadCardId);
+            target.personalEgoDetail.AddCard(Resource.ReloadCardId);
         }
     }
 

@@ -8,7 +8,7 @@ namespace TestingAssistGift
     /// </summary>
     public class GiftPassiveAbility_197000 : PassiveAbilityBase
     {
-        public override void OnCreated()
+        public override void OnWaveStart()
         {
             try
             {

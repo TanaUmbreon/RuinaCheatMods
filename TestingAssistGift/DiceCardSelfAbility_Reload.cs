@@ -6,7 +6,7 @@ namespace TestingAssistGift
     /// バトルページ効果「リロード」
     /// 「月光の輪」の効果設定を再ロードして、全てのキャラクターに効果を適用しなおす。
     /// </summary>
-    public class DiceCardSelfAbility_Reload : DiceCardSelfAbilityBase
+    public class DiceCardSelfAbility_reload : DiceCardSelfAbilityBase
     {
         public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)
         {
@@ -14,7 +14,7 @@ namespace TestingAssistGift
             {
                 var model = new MoonlightRingModel();
                 model.ApplyEffectAll();
-                model.AddReloadCardAllPlayers();
+                model.AddReloadCard(unit);
             }
             catch (Exception ex)
             {

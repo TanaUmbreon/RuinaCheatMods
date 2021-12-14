@@ -21,6 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -60,7 +62,7 @@
   <ItemGroup>
     <Compile Include="BattleUnitBuf_MoonlightRing.cs" />
     <Compile Include="DataAccess\IModSettingsRepository.cs" />
-    <Compile Include="DiceCardSelfAbility_Reload.cs" />
+    <Compile Include="DiceCardSelfAbility_reload.cs" />
     <Compile Include="EffectModel.cs" />
     <Compile Include="DataAccess\JsonModSettingsRepository.cs" />
     <Compile Include="DataAccess\JsonEntites\AddingBufsOnRoundStartObject.cs" />
@@ -103,9 +105,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Localize\jp\GiftTexts\_GiftTexts.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StageModInfo.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StaticInfo\Card\Card.xml">

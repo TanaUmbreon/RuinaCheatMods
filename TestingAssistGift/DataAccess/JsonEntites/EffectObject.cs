@@ -61,7 +61,22 @@
                 name: Name,
                 hpAdder: StatBonus.HpAdder,
                 breakGageAdder: StatBonus.BreakGageAdder,
-                playPointAdder: StatBonus.PlayPointAdder
+                playPointAdder: StatBonus.PlayPointAdder,
+                hpRecover: RecoveringStatOnRoundStart.HpRecover,
+                breakRecover: RecoveringStatOnRoundStart.BreakRecover,
+                playPointRecover: RecoveringStatOnRoundStart.PlayPointRecover,
+                strengthStack: AddingBufsOnRoundStart.Strength,
+                weakStack: AddingBufsOnRoundStart.Weak,
+                enduranceStack: AddingBufsOnRoundStart.Endurance,
+                disarmStack: AddingBufsOnRoundStart.Disarm,
+                quicknessStack: AddingBufsOnRoundStart.Quickness,
+                bindingStack: AddingBufsOnRoundStart.Binding,
+                protectionStack: AddingBufsOnRoundStart.Protection,
+                vulnerableStack: AddingBufsOnRoundStart.Vulnerable,
+                breakProtectionStack: AddingBufsOnRoundStart.BreakProtection,
+                burnStack: AddingBufsOnRoundStart.Burn,
+                paralysisStack: AddingBufsOnRoundStart.Paralysis,
+                bleedingStack: AddingBufsOnRoundStart.Bleeding
             );
         }
     }

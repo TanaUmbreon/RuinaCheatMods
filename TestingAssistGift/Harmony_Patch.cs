@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Xml.Serialization;
-using BongBongEnterprises;
 using GameSave;
 using HarmonyLib;
-using LOR_DiceSystem;
-using LOR_XML;
-using Mod;
 
 namespace TestingAssistGift
 {
@@ -24,40 +18,15 @@ namespace TestingAssistGift
         {
             try
             {
+                Log.Instance.InfoWithCaller("Called.");
+
                 var harmony = new Harmony("TestingAssistGift");
                 harmony.PatchAll();
-
-                FixToNonLocalWorkshop();
             }
             catch (Exception ex)
             {
                 Log.Instance.ErrorOnExceptionThrown(ex);
             }
-        }
-
-        private void FixToNonLocalWorkshop()
-        {
-            Log.Instance.InfomationWithCaller("StageModInfo.xmlを無効化");
-
-            {
-                bool isDeleted = Add_On.Instance.LocalWorkshopList.Remove(Resource.PackageId);
-                Log.Instance.Infomation($"Add_On.Instance.LocalWorkshopListからパッケージID「{Resource.PackageId}」の削除に成功: {isDeleted}");
-            }
-
-            {
-                var addedWorkshopList = PrivateAccess.GetField<List<string>>(Add_On.Instance, "AddedWorkshopList");
-                bool isDeleted = addedWorkshopList.Remove(Resource.PackageId);
-                Log.Instance.Infomation($"Add_On.Instance.AddedWorkshopListからパッケージID「{Resource.PackageId}」の削除に成功: {isDeleted}");
-            }
-
-            //{
-            //    var modList = PrivateAccess.GetField<BongBong_Enterprises, List<ModContentInfo>>("BongBongEnterprises_ModList");
-            //    ModContentInfo mod = modList.FirstOrDefault(m => m.invInfo.workshopInfo.uniqueId == Resource.PackageId);
-            //    if (mod == null)
-            //    {
-            //        Log.Instance.Infomation($"BongBong_Enterprises.BongBongEnterprises_ModListからパッケージID「{Resource.PackageId}」の削除に成功: {isDeleted}");
-            //    }
-            //}
         }
 
         #endregion
