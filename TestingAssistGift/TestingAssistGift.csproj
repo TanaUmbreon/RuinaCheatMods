@@ -132,6 +132,10 @@ set ExportDir=$(SolutionDir)$(SolutionName)-bin-x.x.x\$(ProjectName)\
 if not exist "%25ExportDir%25" mkdir "%25ExportDir%25"
 echo D | xcopy  /s /e /y "%25TargetDir:~0,-1%25" "%25ExportDir%25"
 
+:: ソリューションファイル配下にある特定ファイルをコピー
+set ExportDir=$(SolutionDir)$(SolutionName)-bin-x.x.x\
+xcopy "$(SolutionDir)README(ja).txt" "%25ExportDir%25" /y
+
 :EXIT</PostBuildEvent>
   </PropertyGroup>
 </Project>
