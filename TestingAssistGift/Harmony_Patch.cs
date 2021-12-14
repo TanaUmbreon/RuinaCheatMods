@@ -18,8 +18,6 @@ namespace TestingAssistGift
         {
             try
             {
-                Log.Instance.InfoWithCaller("Called.");
-
                 var harmony = new Harmony("TestingAssistGift");
                 harmony.PatchAll();
             }
