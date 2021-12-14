@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-namespace TestingAssistGift
+namespace BookDropRateChanger
 {
     /// <summary>
     /// ログ出力機能を提供します。
