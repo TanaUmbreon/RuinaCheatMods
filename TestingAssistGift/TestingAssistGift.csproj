@@ -83,7 +83,7 @@
     <Content Include="ArtWork\BufIcon\MoonlightRingBuf.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ArtWork\Cards\SettingsReload.png">
+    <Content Include="ArtWork\Cards\Reload.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="GiftArtWork\MoonlightRing_front.png">

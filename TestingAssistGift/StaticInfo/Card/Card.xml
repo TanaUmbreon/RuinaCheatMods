@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiceCardXmlRoot>
   <Card ID="197000">
-    <Name>SettingsReload</Name>
-    <Artwork>SettingsReload</Artwork>
-    <Keyword>Reload_Keyword</Keyword>
+    <Name>Reload</Name>
+    <Artwork>Reload</Artwork>
     <Rarity>Common</Rarity>
     <Option>Personal</Option>
     <Spec Range="Instance" Cost="0" />

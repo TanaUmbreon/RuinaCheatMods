@@ -3,11 +3,13 @@
 namespace TestingAssistGift
 {
     /// <summary>
-    /// バトルページ効果「リロード」
+    /// バトルページ効果「設定リロード」
     /// 「月光の輪」の効果設定を再ロードして、全てのキャラクターに効果を適用しなおす。
     /// </summary>
     public class DiceCardSelfAbility_reload : DiceCardSelfAbilityBase
     {
+        public override string[] Keywords => new[] { "Reload" };
+
         public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)
         {
             try
