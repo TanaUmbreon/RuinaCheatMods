@@ -1,6 +1,6 @@
 # Ruina Cheat MODs
 
-ゲーム「[Library Of Ruina](https://store.steampowered.com/app/1256670/Library_Of_Ruina/)」のMOD第3弾です。以下の効果を持つチート系MODです。
+ゲーム「[Library Of Ruina](https://store.steampowered.com/app/1256670/Library_Of_Ruina/)」のMOD旧第3弾です。以下の効果を持つチート系MODです。
 
 - 敵から入手できる本の数を増減できる。
 - 接待で敵味方個別に能力値ボーナス・状態の付与、能力値の回復を行う事ができる。
