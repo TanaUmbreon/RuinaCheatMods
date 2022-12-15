@@ -5,6 +5,8 @@
 - 敵から入手できる本の数を増減できる。
 - 接待で敵味方個別に能力値ボーナス・状態の付与、能力値の回復を行う事ができる。
 
+***注意!! このバージョンは本体のアーリーアクセス時代のバージョンに対応していたMODです。正式リリース以降のバージョンでの使用はワークショップ対応版の [Book Drop Rate Changer](https://github.com/TanaUmbreon/RuinaBookDropRateChanger) と [Battle Assist Gift](https://github.com/TanaUmbreon/RuinaBattleAssistGift) を使用してください。***
+
 効果の程度はユーザー側で任意にカスタマイズできます。
 
 ## 注意事項・免責事項等
